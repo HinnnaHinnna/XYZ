@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <script src="sketch.js"></script>
+    <title>XYZ Lab 강연</title>  
+  </head>
+  <body>
+    <main>
+     <div class = "xyz"></div>
+    </main>
+    <script>
+
+
+function setup() {
+  createCanvas(800, 800, WEBGL);
+  camera(500, -30, 100, 200, 0, 0, 0, 1, 0);
+ 
+  debugMode(AXES,700, -100, -100, -100, 0, 40, 0);
+
+ /*  if (keyIsDown(32)) {
+    noDebugMode();
+  } */
+  detailY = createSlider(1, 16, 2);
+  detailY.position(70, height + 2);
+  detailY.style('width', '150px');
+
+  normalMaterial();
+
+
+}
+
+function draw() {
+
+  
+/*   for (i = 0; i<360; i++){
+    c = color('hsl(200,100%,'+map(i,0,width,0,100)+'%)');
+*/
+
+
+  background(0,0,0,0);
+  orbitControl();
+  rotateY(millis() / 400);
+  sphere(80, 12, detailY.value());
+}
+
+
+
+
+/*
+  function setup() {
+    createCanvas(1020, 1980);
+    noFill();
+  }
+  
+  function draw() {
+    background(0,0,0,0);
+    stroke(mouseY/3+200, 0, 0);
+    clear();
+    line(mouseX, 0, mouseY, 1200);
+    stroke(0, mouseY/5+150, 0);
+    line(0, mouseX, 1200, mouseY);
+    stroke(20, 0, mouseX/5+120);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+    print(pmouseX + ' -> ' + mouseX); 
+    strokeWeight(7);
+  } */
+    </script>
+  </body>
+</html>
